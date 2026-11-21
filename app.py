@@ -7,8 +7,7 @@ app = Flask(__name__)
 MESSAGE = os.environ.get("MESSAGE", "Bonjour depuis mon premier PaaS !")
 @app.route("/")
 def home():
-    return "<h1>{}</h1><p>Version 1</p>".format(MESSAGE)
-
+    return "<h1>" + str(escape(MESSAGE)) + "</h1><p>Version 2</p>"
 @app.route("/api/health")
 def health():
     return jsonify(status="ok")
