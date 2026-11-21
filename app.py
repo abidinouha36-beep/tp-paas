@@ -1,5 +1,7 @@
 import os
 from flask import Flask, jsonify
+from markupsafe import escape
+from markupsafe import escape
 
 app = Flask(__name__)
 
@@ -7,7 +9,7 @@ app = Flask(__name__)
 MESSAGE = os.environ.get("MESSAGE", "Bonjour depuis mon premier PaaS !")
 @app.route("/")
 def home():
-    return "<h1>" + str(escape(MESSAGE)) + "</h1><p>Version 2</p>"
+  return "<h1>" + str(escape(MESSAGE)) + "</h1><p>Version 2</p>"
 @app.route("/api/health")
 def health():
     return jsonify(status="ok")
